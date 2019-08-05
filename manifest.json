@@ -1,0 +1,32 @@
+{
+  "manifest_version": 2,
+  "name": "荔枝FM for Free",
+  "version": "1.0",
+  "description": "个人使用的荔枝FM免费收听插件",
+  "author": "zhx",
+  "icons":
+  {
+    "48": "./images/icon.png",
+    "128": "./images/icon.png"
+  },
+  "browser_action":
+  {
+    "default_icon": "./images/icon.png",
+    "default_popup": "./html/popup.html"
+  },
+  "background":
+  {
+    "scripts": ["js/background.js"]
+  },
+  "content_scripts":
+  [
+    {
+      "matches": ["https://m.lizhi.fm/vod/*/*"],
+      "js": ["./js/content-script.js"]
+    }
+  ],
+  "web_accessible_resources":
+  [
+    "inject.js"
+  ]
+}
