@@ -23,7 +23,13 @@
     const id = routerArr.pop();
     const url = 'https://m.lizhi.fm/vodapi/voice/info/' + id;
     getJSON(url).then(function(json) {
-        const trackUrl  = json.data.userVoice.voicePlayProperty.trackUrl;
+        const imageUrl = json.data.userVoice.voiceInfo.imageUrl;
+        let voiceUrlArr = imageUrl.replace('http://cdnimg101.mlychee.com/audio_cover/', 'http://cdn5.lizhi.fm/audio/').split('/');
+        voiceUrlArr.pop();
+        voiceUrlArr.push(`${id}_ud.mp3`);
+        const trackUrl = voiceUrlArr.join('/');
+        console.log(trackUrl);
+        // const trackUrl  = json.data.userVoice.voicePlayProperty.trackUrl;
         let audio = document.createElement('audio');
         audio.src = trackUrl;
         let block = document.createElement('div');
